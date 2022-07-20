@@ -4,6 +4,7 @@ int main(int argc, char* argv[]) {
     if (argc > 1) {
         flag opt;
         clear_struct(&opt);
+        opterr = 0;
         int result = parser(argc, argv, &opt);
         if (opt.b) {
             opt.n = 0;
@@ -52,7 +53,7 @@ int parser(int argc, char* argv[], flag* opt) {
             default: {
                 printf("s21_cat: illegal option -- %c\n", argv[1][1]);
                 printf("usage: cat [-benstuv] [file ...]\n");
-                result = 1;
+                result = -1;
                 break;
             }
         }
